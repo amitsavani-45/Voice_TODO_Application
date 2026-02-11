@@ -29,8 +29,16 @@ else if(transcript.startWith("mark task")){
 }
 }
 function addTask(task){
+    tasklist.push({text:task,done:false});
+    renderTasks();
 
 }
 function deleteTask(num){
-    
+    if(taskList[num]){
+        taskList.splice(num,1);
+    }
+
+}
+function markTaskDone(num){
+
 }
