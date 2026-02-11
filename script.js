@@ -36,9 +36,30 @@ function addTask(task){
 function deleteTask(num){
     if(taskList[num]){
         taskList.splice(num,1);
+        renderTasks();
     }
 
 }
 function markTaskDone(num){
+    if(taskList[num]){
+        taskList[num].done=true;
+        renderTasks();
+    }
 
 }
+
+function renderTasks(){
+    listElement.innerHtml="";
+    tasklist.forEach((task,idx)=>{
+        const li=document.createElement("li");
+        li.innerText=`${idx+1}. ${task.text} ${task.done ? "✅" : ""}`;
+        listElement.appendChild(li);
+    });
+}
+
+function startvoice(){
+    statusText.innerText="Listening...";
+    recognition.start();
+}
+
+document.getElementById("startBtn").addEventListener("click");
